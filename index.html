@@ -1,0 +1,74 @@
+<DOCTYPE html5>
+<html ng-app="claireApp">
+<head>
+<title>My First Webpage</title>
+<script type="text/javascript" src="ng/angular1.3.js"></script>
+<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body ng-controller="indexCtrl">
+
+<nav class="navbar navbar-inverse" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" href='#'>ClaireParkerPen.com</a>
+</div>
+<div id="navbar" class="collapse navbar-collapse">
+<ul class="nav navbar-nav">
+<li class="active">
+<a href='#'>Home</a>
+</li>
+<li><a href='#'>Projects</a></li>
+<li><a href='#'>About</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+</nav>
+
+<div class="jumbotron">
+<div class="container">
+<h1>claireparkerpen.com</h1>
+<p>{{message}}</p>
+<p>This site looks terrible because it's under construction. Come back later.</p>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<h2>To-Do</h2>
+<ul>
+<li>Get a better text-editor</li>
+<li>Get a better computer</li>
+<li>Get a better font</li>
+</ul>
+</div>
+
+<div class="col-md-4">
+<h2>I love buttons</h2>
+<button type="button" class="btn btn-info">Blue buttons</button>
+<button type="button" class="btn btn-warning">Orange buttons</button>
+<button type="button" class="btn btn-lg btn-danger">Big red buttons</button>
+</div>
+
+<div class="col-md-4">
+<h2>Foo foo foo</h2>
+<p>Foo bar baz boz.</p>
+<<<<<<< HEAD
+<p><a href="crossword.html">Crossword Solver</a></p>
+=======
+>>>>>>> 680f07649ebd395203d57c8cee6ce61d208526fb
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+var claireApp = angular.module("claireApp", []);
+claireApp.controller("indexCtrl", function($scope) {
+	$scope.message = "Hello World";
+});
+</script>
+</body>
+</html>
