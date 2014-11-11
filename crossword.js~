@@ -5,7 +5,7 @@ app.directive('clueBox', function() {
   return {
     restrict: 'E',
     template: 
-		'<div class="clueContainer">'
+		'<div class="container">'
 		+ '<input type="text" class="squareInput" maxlength=1 ng-model="clueLetters[$index].letter" />'
 		+ '<span class="countBox">{{$index+1}}</span>'
 		+ '<button class="deleteBox" ng-click="removeBox($index)">X</button>'

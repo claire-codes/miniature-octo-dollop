@@ -6,9 +6,9 @@
 	  font-size: 32px;
 	  text-align: center;
 	}
-	.clueContainer {
-	  float: none;
-	  display: inline-block;
+	.container {
+		float: none;
+	display: inline-block;
 	  height: 70px;
 	  width: 70px;
 	  margin-bottom: 5px;
