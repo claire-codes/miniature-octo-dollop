@@ -18,9 +18,10 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
   $scope.wordList = [];
   
   // Do Ajax stuff to obtain external wordList.
-  $http.get("wordList.json")
+  $http.get("bothWordLists.json")
     .success(function(data) {
-      $scope.wordList = data.wordlist;
+      $log.info("Has it");
+      $scope.wordList = data.wordList;
     })
     .error(function(data) {
       $log.error("Nope");
