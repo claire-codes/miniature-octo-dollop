@@ -20,7 +20,6 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
   // Do Ajax stuff to obtain external wordList.
   $http.get("bothWordLists.json")
     .success(function(data) {
-      $log.info("Has it");
       $scope.wordList = data.wordList;
     })
     .error(function(data) {
@@ -56,7 +55,7 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
   // Remove boxes by slicing out of model.
   $scope.removeBox = function(ind) {
     // Take the one off the end if not explicitly mentioned.
-    var index = ind | $scope.clueLetters.length -1;
+    var index = ind || $scope.clueLetters.length -1;
     var minBoxLimit = 2;
     if ($scope.clueLetters.length > minBoxLimit) {
       $scope.clueLetters.splice(index, 1);
@@ -66,7 +65,6 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
   // Reset screen for new clue
   $scope.restart = function() {
     $scope.clueLetters = angular.copy($scope.INITIAL_MODEL);
-    console.log($scope.INITIAL_MODEL);
     $scope.matchBox = [];
   };
   
@@ -83,25 +81,20 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
       // TODO: What if there something other than a letter or a blank?
       clue += obj.letter;
     });
-    $scope.clue = clue;
     return clue;
   };
 
   
   $scope.processRegex = function(regex) {
-    console.log("Meh: " + regex);
-    var newRegex = new RegExp(regex);
-    var smeh = "Smeh " + newRegex;
-    console.log(smeh);
-    $scope.processedRegex = smeh;  
+    console.log("Regex: " + regex);
+    var newRegex = new RegExp(regex, "i");
     var matchBox = [];
     $scope.wordList.forEach(function(word) {
-      if (word.match(regex)) {
+      if (word.match(newRegex)) {
         matchBox.push(word);
       }
     });
-    $scope.matchBox = matchBox;
-    console.log("Matches: " + matchBox);
+    $scope.matchBox = matchBox.sort(function(a,b){return a.toLowerCase().localeCompare(b.toLowerCase());});
   };
   
   var convertBlanks = function(total) {
@@ -129,7 +122,6 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
     var wordLength = convertThis.length;
     while (charCount < wordLength) {
       var currentChar = convertThis[charCount];
-      console.log("Current char: " + currentChar);
       if (isBlank(currentChar)) {
         blankCount++;
       } else {
@@ -142,10 +134,7 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
         }
       }
       charCount++;
-      console.log("charCount = " + charCount);
-      console.log(regex);
     }
-    console.log("BlankCount: " + blankCount);
     if (blankCount > 0) {
       regex += convertBlanks(blankCount);
     }

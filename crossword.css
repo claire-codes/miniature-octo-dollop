@@ -5,6 +5,7 @@
 	  width: 70px;
 	  font-size: 32px;
 	  text-align: center;
+	  text-transform: lowercase;
 	}
 	.clueContainer {
 	  float: none;
@@ -61,4 +62,13 @@
 	.col-centered {
 		float: none;
 		margin: 0 auto;
+	}
+	.lobster {
+		font-family: 'Lobster', cursive;
+	}
+	.merriweather {
+		font-family: 'Merriweather', serif;
+	}
+	#bg {
+		background-color: rgba(122, 129, 133, 0.25);
 	}
