@@ -15,26 +15,41 @@
   <body ng-controller="RegexCtrl" id="bg">
 	
 	<div class="container-fluid">
-		<div class="row">
-			<h1 class="text-center lobster">Claire's Crossword Solver</h1>
-		</div>
+ 
+    	<div class="row-centered merriweather">
+    		<div class="col-centered">C</div>
+    		<div class="col-centered">R</div>
+    		<div class="col-centered">O</div>
+    		<div class="col-centered">S</div>
+    		<div class="col-centered">S</div>
+    		<div class="col-centered">W</div>
+    		<div class="col-centered">O</div>
+    		<div class="col-centered">R</div>
+    		<div class="col-centered">D</div>
+    	</div>
+    	<div class="row-centered merriweather">
+    		<div class="col-centered">S</div>
+    		<div class="col-centered">O</div>
+    		<div class="col-centered">L</div>
+    		<div class="col-centered">V</div>
+    		<div class="col-centered">E</div>
+    		<div class="col-centered">R</div>
+    	</div>
+
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="text-center merriweather col-md-4"><em>Stuck on that final clue in your crossword? Simply type in any letters you have into the boxes below, maintaining any missing letters, and hit the submit button to see your potential answers!</em></div>
 			<div class="col-md-4"></div>
 		</div>
+
 		<div class="contain-content">
 			<div class="clue-container">
 				<button type="button" class="btn btn-default" ng-click="removeBox()">-</button>
 				<clue-box ng-repeat="char in clueLetters"></clue-box>
 				<button type="button" class="btn btn-default" ng-click="addBox()">+</button>
 			</div>
-			<p>
-				
 
-			</p>
-
-			<p><button class="btn btn-warning" ng-click="allInOne()">Submit</button></p>
+			<p><button class="btn btn-warning" ng-click="findMatches()" tabindex="{{submitIndex}}" id="submitButton">Submit</button></p>
 
 			<div class="row" ng-show="matchBox.length">Results
 				<div class="matchBox col-md-2 col-centered">

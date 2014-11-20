@@ -6,14 +6,26 @@ app.directive('clueBox', function() {
     restrict: 'E',
     template: 
 		'<div class="clueContainer">'
-		+ '<input type="text" class="squareInput" maxlength=1 ng-model="clueLetters[$index].letter" />'
+		+ '<input type="text" class="squareInput" maxlength=1 ng-model="clueLetters[$index].letter" tabindex="{{$index+1}}"  ng-keyup="moveBox($index)" />'
 		+ '<span class="countBox">{{$index+1}}</span>'
-		+ '<button class="deleteBox" ng-click="removeBox($index)">X</button>'
+		+ '<button class="deleteBox" ng-click="removeBox($index)" tabindex="0">X</button>'
 		+ '</div>'
   };
 });
 
 app.controller('RegexCtrl', function($scope, $log, $http) {
+
+    /** Move to next box after one character is input */
+	  $scope.moveBox = function(index) {
+	    var boxes = document.getElementsByClassName('squareInput');
+	    var submit = document.getElementById('submitButton');
+	    if (index < boxes.length -1) {
+  	    var next = boxes[index + 1];
+  	    next.focus();
+	    } else {
+	      submit.focus();
+	    }
+	  };
   
   $scope.wordList = [];
   
@@ -55,7 +67,7 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
   // Remove boxes by slicing out of model.
   $scope.removeBox = function(ind) {
     // Take the one off the end if not explicitly mentioned.
-    var index = ind || $scope.clueLetters.length -1;
+	 var index = ind > -1 ? ind : $scope.clueLetters.length -1;
     var minBoxLimit = 2;
     if ($scope.clueLetters.length > minBoxLimit) {
       $scope.clueLetters.splice(index, 1);
@@ -143,7 +155,7 @@ app.controller('RegexCtrl', function($scope, $log, $http) {
     return regex;
   };
   
-  $scope.allInOne = function() {
+  $scope.findMatches = function() {
     var clueBoxes = $scope.getClue();
     $scope.processRegex($scope.toRegex(clueBoxes));
   };

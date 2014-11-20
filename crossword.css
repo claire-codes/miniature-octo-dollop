@@ -1,11 +1,18 @@
 	.squareInput {
-	  border: 2px solid #66666;
-	  border-radius: 7px;
+	  border: 2px solid black;
+	  //border-radius: 7px;
 	  height: 70px;
 	  width: 70px;
 	  font-size: 32px;
 	  text-align: center;
 	  text-transform: lowercase;
+	}
+	.title-box {
+		height: 60px;
+		weight: 60px;
+		text-align: center;
+		font-size: 28px;
+		border: 2px solid black;
 	}
 	.clueContainer {
 	  float: none;
@@ -71,4 +78,31 @@
 	}
 	#bg {
 		background-color: rgba(122, 129, 133, 0.25);
+	}
+	.row-centered {
+		text-align:center;
+		/* Set explicit width on container to stop children collapsing */
+		width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.col-centered {
+		display:inline-block;
+		float:none;
+		/* reset the text-align */
+		text-align:center;
+		/* inline-block space fix */
+		margin-right:-4px;
+		width: 50px;
+		height: 50px;
+		font-size: 32px;
+		/* reset the padding */
+		padding: 0;
+		border: 5px solid #000;
+		border-radius: 10px;
+		/* http://blog.teamtreehouse.com/css-tip-better-rounded-borders */
+		background-color: white;
+	}
+	.row-centered div:last-child {
+		border-right: 5px solid black;
 	}
